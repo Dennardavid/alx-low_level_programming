@@ -6,19 +6,19 @@
  *        head of the listint_t list.
  *
  * Return: If the linked list is empty - 0.
- *         Otherwise - return the head node's data (n).
+ *         Otherwise - The head node's data (n).
  */
 int pop_listint(listint_t **head)
 {
 	listint_t *temporary;
 	int head_node_data;
 
+	if (*head == NULL)
+		return (0);
+
 	temporary = *head;
 	head_node_data = (*head)->n;
 	*head = (*head)->next;
-
-	if (*head == NULL)
-		return (0)
 
 	free(temporary);
 
