@@ -10,8 +10,7 @@
  */
 unsigned int flip_bits(unsigned long int n, unsigned long int m)
 {
-	int i;
-        int number_of_bits = 0;
+	int i, number_of_bits = 0;
 	unsigned long int flipper;
 	unsigned long int flip = n ^ m;
 
