@@ -12,7 +12,7 @@
  */
 ssize_t read_textfile(const char *filename, size_t letters)
 {
-	ssize_t opened, read_file, write_file;
+	ssize_t op, rd, wr;
 	char *buffer;
 
 	if (filename == NULL)
@@ -22,18 +22,18 @@ ssize_t read_textfile(const char *filename, size_t letters)
 	if (buffer == NULL)
 		return (0);
 
-	opened = open(filename, O_RDONLY);
-	read_file = read(opened, buffer, letters);
-	write_file = write(STDOUT_FILENO, buffer, read_file);
+	op = open(filename, O_RDONLY);
+	rd = read(op, buffer, letters);
+	wr = write(STDOUT_FILENO, buffer, rd);
 
-	if (opened==-1 || read_file==-1 || write_file==-1 || write_file!=read_file)
+	if (op == -1 || rd == -1 || wr == -1 || wr != rd)
 	{
 		free(buffer);
 		return (0);
 	}
 
 	free(buffer);
-	close(opened);
+	close(op);
 
-	return (write_file);
+	return (wr);
 }
